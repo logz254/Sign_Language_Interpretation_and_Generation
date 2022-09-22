@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QDialog, QApplication, QSplashScreen
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QDialog, QApplication, QSplashScreen,QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
@@ -23,7 +24,7 @@ class SplashScreen(QSplashScreen):
 class MainPage(QDialog):
     def __init__(self):
         super(QDialog, self).__init__()
-        loadUi("main.ui", self)
+        loadUi("dashboard.ui", self)
 
 
 if __name__ == '__main__':
