@@ -5,6 +5,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 import time
+import sqlite3
 
 
 class SplashScreen(QSplashScreen):
@@ -20,21 +21,29 @@ class SplashScreen(QSplashScreen):
             time.sleep(0.1)
             self.progressBar.setValue(i)
 
-
-class MainPage(QDialog):
+class Dashboard(QDialog):
     def __init__(self):
         super(QDialog, self).__init__()
         loadUi("dashboard.ui", self)
+        self.login1.clicked.connect(self.gotologin)
+    
+    def gotoLogin(self):
+       login1=LoginScreen()
+        
 
+
+class LoginScreen(QDialog):
+    def __init__(self):
+        super(LoginScreen,self).__init__()
+        loadUi("login.ui",self)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-
     splash = SplashScreen()
     splash.show()
     splash.progress()
 
-    window = MainPage()
+    window = Dashboard()
     window.show()
 
     splash.finish(window)
