@@ -1,11 +1,11 @@
 import sys
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QSplashScreen,QWidget
+import time
 from PyQt5.uic import loadUi
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-import time
-import sqlite3
+from PyQt5.QtWidgets import QApplication, QDialog, QSplashScreen, QWidget
+
 
 
 class SplashScreen(QSplashScreen):
@@ -16,35 +16,33 @@ class SplashScreen(QSplashScreen):
         pixmap = QPixmap("background.png")
         self.setPixmap(pixmap)
 
+        
     def progress(self):
-        for i in range(100):
+        for i in range(101):
             time.sleep(0.1)
             self.progressBar.setValue(i)
+            
 
 class Dashboard(QDialog):
     def __init__(self):
-        super(QDialog, self).__init__()
-        loadUi("dashboard.ui", self)
-        self.login1.clicked.connect(self.gotologin)
+        super(Dashboard,self).__init__()
+        loadUi("dashboard.ui",self)
+        self.setFixedWidth(1201)
+        self.setFixedHeight(801)
+
+#if __name__ == '__main__':
+#main
+app = QApplication(sys.argv)
+splash = SplashScreen()
+splash.show()
+splash.progress()
+dashboard=Dashboard()
+
+widget=QtWidgets.QStackedWidget()
+widget.addWidget(splash)
+widget.addWidget(dashboard)
+widget.show()
+widget.setCurrentIndex(widget.currentIndex()+1)
     
-    def gotoLogin(self):
-       login1=LoginScreen()
-        
-
-
-class LoginScreen(QDialog):
-    def __init__(self):
-        super(LoginScreen,self).__init__()
-        loadUi("login.ui",self)
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    splash = SplashScreen()
-    splash.show()
-    splash.progress()
-
-    window = Dashboard()
-    window.show()
-
-    splash.finish(window)
-    app.exec_()
+#splash.finish(widget) Don't need this code since QStackedWidget is in use.
+app.exec_()
