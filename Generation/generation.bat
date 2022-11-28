@@ -1,0 +1,3 @@
+ cd "C:\Users\Allan\Documents\STRATHMORE\4_YEAR\IS_PROJECT_II\project\Sign_Language_Interpretation_and_Generation\Generation\deepspeech\mic_vad_streaming"
+
+python mic_vad_streaming.py -m C:\Users\Allan\Documents\STRATHMORE\4_YEAR\IS_PROJECT_II\project\Sign_Language_Interpretation_and_Generation\Generation\deepspeech-0.9.3-models.pbmm -s C:\Users\Allan\Documents\STRATHMORE\4_YEAR\IS_PROJECT_II\project\Sign_Language_Interpretation_and_Generation\Generation\deepspeech-0.9.3-models.scorer

@@ -2,6 +2,7 @@ import sys
 import time
 import sqlite3
 import bcrypt
+import subprocess
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
@@ -123,6 +124,11 @@ class OptionScreen(QDialog):
     def __init__(self):
         super(OptionScreen,self).__init__()
         loadUi("option.ui",self)
+        self.generation_btn.clicked.connect(self.gotogeneration)
+
+    def gotogeneration(self):
+        subprocess.call([r'C:\Users\Allan\Documents\STRATHMORE\4_YEAR\IS_PROJECT_II\project\Sign_Language_Interpretation_and_Generation\Generation'])
+
 
 
 
